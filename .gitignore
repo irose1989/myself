@@ -16,3 +16,4 @@ Shiro/.idea/workspace.xml
 Shiro/target/classes/TestLog.class
 Shiro/target/classes/shiro.ini
 Shiro/Shiro.iml
+*.class
