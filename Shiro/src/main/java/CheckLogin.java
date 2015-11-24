@@ -1,10 +1,14 @@
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.apache.shiro.util.ThreadContext;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -67,6 +71,30 @@ public class CheckLogin {
         }
         Assert.assertEquals(true, subject.isAuthenticated()); //断言用户已经登录
         subject.logout();
+    }
+
+    /**
+     * 登入验证通用化
+     * @param config
+     */
+    public void checkLogin(String config){
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory(config);
+        SecurityManager securityManager = factory.getInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken("zhang","123");
+            subject.login(token);
+    }
+    @Test
+    public void testStrategy(){
+        checkLogin("classpath:allSucessfullStrategy.ini");
+        Subject subject = SecurityUtils.getSubject();
+        PrincipalCollection collection = subject.getPrincipals();
+        Assert.assertEquals(2, collection.asList().size());
+    }
+    @After
+    public void tearDown() throws Exception {
+        ThreadContext.unbindSubject();//退出时请解除绑定Subject到线程 否则对下次测试造成影响
     }
 
 }
