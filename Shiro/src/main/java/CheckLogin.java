@@ -12,6 +12,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.security.Principal;
+
 /**
  *登入身份验证
  * Created by wb-chenchaobin on 2015/11/23.
@@ -26,7 +28,7 @@ public class CheckLogin {
         SecurityUtils.setSecurityManager(securityManager);
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
+        UsernamePasswordToken token = new UsernamePasswordToken("wang", "123");
         try {
             //4、登录，即身份验证
             subject.login(token);
@@ -83,14 +85,34 @@ public class CheckLogin {
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken("zhang","123");
-            subject.login(token);
+        subject.login(token);
     }
     @Test
-    public void testStrategy(){
+    public void testStrategySuccess(){
         checkLogin("classpath:allSucessfullStrategy.ini");
         Subject subject = SecurityUtils.getSubject();
         PrincipalCollection collection = subject.getPrincipals();
-        Assert.assertEquals(2, collection.asList().size());
+        Assert.assertEquals(3, collection.asList().size());
+    }
+    @Test
+    public void testStrategyFailed(){
+        checkLogin("classpath:allSucessfullStrategy.ini");
+        Subject subject = SecurityUtils.getSubject();
+        PrincipalCollection collection = subject.getPrincipals();
+        Assert.assertEquals(1,collection.asList().size());
+    }
+    @Test
+    public void testFirstSucessStrategy(){
+        checkLogin("classpath:allSucessfullStrategy.ini");
+        Subject subject = SecurityUtils.getSubject();
+        PrincipalCollection collection = subject.getPrincipals();
+        Assert.assertEquals(1,collection.asList().size());
+    }
+    @Test
+    public void testRole(){
+        checkLogin("classpath:shiro-role.ini");
+        Subject subject = SecurityUtils.getSubject();
+        Assert.assertTrue(subject.hasRole("role1"));
     }
     @After
     public void tearDown() throws Exception {
