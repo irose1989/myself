@@ -1,4 +1,4 @@
-package shrio;
+package shrio.login_role;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -24,7 +24,7 @@ public class CheckLogin {
     @Test
     public void test1(){
         //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro/login-role/shiro.ini");
         SecurityManager securityManager = factory.getInstance();
         //2、得到SecurityManager实例 并绑定给SecurityUtils
         SecurityUtils.setSecurityManager(securityManager);
@@ -46,7 +46,7 @@ public class CheckLogin {
 
     @Test
     public void testMyRealm1(){
-        Factory<SecurityManager>factory = new IniSecurityManagerFactory("classpath:shiro-realm.ini");
+        Factory<SecurityManager>factory = new IniSecurityManagerFactory("classpath:shiro/login-role/shiro.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject = SecurityUtils.getSubject();
@@ -62,7 +62,7 @@ public class CheckLogin {
     }
     @Test
     public void testJdbcRealm(){
-        Factory<SecurityManager>factory = new IniSecurityManagerFactory("classpath:shiro-jdbc-realm.ini");
+        Factory<SecurityManager>factory = new IniSecurityManagerFactory("classpath:shiro/login-role/shiro-jdbc-realm.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject = SecurityUtils.getSubject();
@@ -91,28 +91,28 @@ public class CheckLogin {
     }
     @Test
     public void testStrategySuccess(){
-        checkLogin("classpath:allSucessfullStrategy.ini");
+        checkLogin("classpath:shiro/login-role/allSucessfullStrategy.ini");
         Subject subject = SecurityUtils.getSubject();
         PrincipalCollection collection = subject.getPrincipals();
         Assert.assertEquals(3, collection.asList().size());
     }
     @Test
     public void testStrategyFailed(){
-        checkLogin("classpath:allSucessfullStrategy.ini");
+        checkLogin("classpath:shiro/login-role/allSucessfullStrategy.ini");
         Subject subject = SecurityUtils.getSubject();
         PrincipalCollection collection = subject.getPrincipals();
         Assert.assertEquals(1,collection.asList().size());
     }
     @Test
     public void testFirstSucessStrategy(){
-        checkLogin("classpath:allSucessfullStrategy.ini");
+        checkLogin("classpath:shiro/login-role/allSucessfullStrategy.ini");
         Subject subject = SecurityUtils.getSubject();
         PrincipalCollection collection = subject.getPrincipals();
         Assert.assertEquals(1,collection.asList().size());
     }
     @Test
     public void testRole(){
-        checkLogin("classpath:shiro-role.ini");
+        checkLogin("classpath:shiro/login-role/shiro-role.ini");
         Subject subject = SecurityUtils.getSubject();
         Assert.assertTrue(subject.hasRole("role1"));
     }

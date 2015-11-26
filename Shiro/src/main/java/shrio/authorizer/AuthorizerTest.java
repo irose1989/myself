@@ -10,7 +10,7 @@ import test.BaseTest;
 public class AuthorizerTest extends BaseTest{
     @Test
     public void testIsPermitted() {
-        login("classpath:authorizer/shiro-authorizer.ini", "zhang", "123");
+        login("classpath:shiro/authorizer/shiro-authorizer.ini", "zhang", "123");
         //判断拥有权限：user:create
         Assert.assertTrue(getSubject().isPermitted("user1:update"));
         Assert.assertTrue(getSubject().isPermitted("user2:update"));
@@ -26,7 +26,7 @@ public class AuthorizerTest extends BaseTest{
 
     @Test
     public void testIsPermitted2() {
-        login("classpath:shiro-jdbc-authorizer.ini", "zhang", "123");
+        login("classpath:shiro/authorizer/shiro-jdbc-authorizer.ini", "zhang", "123");
         //判断拥有权限：user:create
         Assert.assertTrue(getSubject().isPermitted("user1:update"));
         Assert.assertTrue(getSubject().isPermitted("user2:update"));
@@ -36,7 +36,6 @@ public class AuthorizerTest extends BaseTest{
         Assert.assertTrue(getSubject().isPermitted("+user2+10"));//新增及查看
 
         Assert.assertFalse(getSubject().isPermitted("+user1+4"));//没有删除权限
-
         Assert.assertTrue(getSubject().isPermitted("menu:view"));//通过MyRolePermissionResolver解析得到的权限
     }
 }

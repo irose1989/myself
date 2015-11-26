@@ -8,7 +8,7 @@ import org.apache.shiro.subject.Subject;
 /**
  * Created by wb-chenchaobin on 2015/11/25.
  */
-public class BaseTest {
+public class BaseLogin {
     public void login(String config,String userName,String password){
         IniSecurityManagerFactory factory = new IniSecurityManagerFactory(config);
         org.apache.shiro.mgt.SecurityManager manager = factory.getInstance();

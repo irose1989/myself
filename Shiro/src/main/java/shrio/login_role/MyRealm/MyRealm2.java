@@ -1,4 +1,4 @@
-package shrio.MyRealm;
+package shrio.login_role.MyRealm;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
