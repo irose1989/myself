@@ -19,3 +19,5 @@ Shiro/Shiro.iml
 *.class
 Shiro/.idea/
 Shiro/target/classes/
+.idea/
+chapter06/target/

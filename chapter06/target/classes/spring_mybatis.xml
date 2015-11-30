@@ -21,6 +21,20 @@
     <bean id="permissionService" class="service.impl.PermissionServiceImpl"/>
     <bean id="roleService" class="service.impl.RoleServiceImpl"/>
     <bean id="userService" class="service.impl.UserServiceImpl"/>
+    <bean id="passwordHelp" class="service.util.PasswordHelp"/>
+    <bean id="hashedCredentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="MD5"/>
+        <property name="hashIterations" value="2"/>
+        <property name="storedCredentialsHexEncoded" value="true"/>
+    </bean>
+    <bean id="myRealm" class="service.realm.MyRealm">
+        <property name="userService" ref="userService"/>
+        <property name="credentialsMatcher" ref="hashedCredentialsMatcher"/>
+    </bean>
+    <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+
     <!--datasource-->
     <context:property-placeholder location="classpath:db.properties"/>
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -43,7 +57,7 @@
     <!--spring与mybatis整合配置,mapperLocations为扫描所有mapper文件-->
     <bean id ="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:sqlmap/*.xml"></property>
+        <property name="mapperLocations" value="classpath:sqlmap/*/*.xml"></property>
     </bean>
 
     <!--扫描dao接口生成bean-->

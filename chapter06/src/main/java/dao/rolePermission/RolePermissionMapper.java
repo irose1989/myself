@@ -1,7 +1,7 @@
 package dao.rolePermission;
 
-import entity.rolePermission.RolePermissionExample;
-import entity.rolePermission.RolePermissionKey;
+import dao.entity.rolePermission.RolePermissionExample;
+import dao.entity.rolePermission.RolePermissionKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
 package dao.userRole;
 
-import entity.userRole.UserRoleExample;
-import entity.userRole.UserRoleKey;
+import dao.entity.userRole.UserRoleExample;
+import dao.entity.userRole.UserRoleKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

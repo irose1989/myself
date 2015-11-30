@@ -1,6 +1,6 @@
 package service.util;
 
-import entity.user.User;
+import dao.entity.user.User;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 
@@ -18,6 +18,7 @@ public class PasswordHelp{
 
         String newPassword = new SimpleHash(algorithmName,password,username+salt,hashIterations).toHex();
         user.setPassword(newPassword);
+        user.setSalt(salt);
         return user;
     }
 

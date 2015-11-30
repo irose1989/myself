@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="F:/MyRepository/mysql/mysql-connector-java/5.1.25/mysql-connector-java-5.1.25.jar/" />
+    <classPathEntry location="D:\m2repository\mysql\mysql-connector-java\5.1.29\mysql-connector-java-5.1.29.jar" />
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
@@ -20,23 +20,23 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="entity.role"
-                            targetProject="F:\1\myself\chapter06\src\main\java">
+        <javaModelGenerator targetPackage="dao.entity.user"
+                            targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="sqlmap"
-                         targetProject="F:\1\myself\chapter06\src\main\java">
+        <sqlMapGenerator targetPackage="sqlmap.user"
+                         targetProject="src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="dao.role" targetProject="F:\1\myself\chapter06\src\main\java">
+                             targetPackage="dao.user" targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="sys_roles" domainObjectName="Role">
+        <table tableName="sys_users" domainObjectName="User">
         </table>
 
     </context>

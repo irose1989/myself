@@ -1,7 +1,9 @@
 package service;
 
-import entity.user.User;
+import dao.entity.user.User;
+import service.vo.UserVO;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -45,16 +47,18 @@ public interface UserService {
 
     /**
      * 根据用户名查找其角色
-     * @param username
+     * @param userName
      * @return
      */
-    public Set<String> findRoles(String username);
+    public UserVO findRoles(String userName);
 
     /**
      * 根据用户名查找其权限
      * @param username
      * @return
      */
-    public Set<String> findPermissions(String username);
+    public UserVO findPermissions(String username);
+
+
 
 }

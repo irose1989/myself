@@ -1,7 +1,7 @@
 package dao.role;
 
-import entity.role.Role;
-import entity.role.RoleExample;
+import dao.entity.role.Role;
+import dao.entity.role.RoleExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

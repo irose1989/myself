@@ -1,8 +1,8 @@
 package service.impl;
 
 import dao.permission.PermissionMapper;
-import entity.permission.Permission;
-import entity.permission.PermissionExample;
+import dao.entity.permission.Permission;
+import dao.entity.permission.PermissionExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import service.PermissionService;
@@ -29,5 +29,10 @@ public class PermissionServiceImpl implements PermissionService {
         example.createCriteria().andPermissionEqualTo(permission);
         List<Permission> list = mapper.selectByExample(example);
         return list.get(0);
+    }
+
+    public Permission getPsermission(long permissionId) {
+        Permission permission = mapper.selectByPrimaryKey(permissionId);
+        return permission;
     }
 }
