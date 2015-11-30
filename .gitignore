@@ -19,3 +19,4 @@ Shiro/Shiro.iml
 *.class
 Shiro/.idea/
 Shiro/target/classes/
+.idea/*

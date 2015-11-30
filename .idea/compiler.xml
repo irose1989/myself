@@ -22,11 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="Shiro" />
+        <module name="chapter06" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="Shiro" target="1.7" />
+      <module name="chapter06" target="1.5" />
+      <module name="Shiro" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
