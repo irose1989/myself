@@ -12,22 +12,32 @@ public class LoginTest extends BaseTest{
 
     @Test
     public void testLoginSuccess(){
-        login("classpath:realm/shiro_login.ini",username,password);
+        loginWithSpringConfig(username, password);
         Assert.assertTrue(subject().isAuthenticated());
     }
     @Test
     public void testLoginWithWrongUsername(){
-        login("classpath:realm/shiro_login.ini",username+1,password);
+        loginWithSpringConfig(username + 1, password);
         Assert.assertTrue(subject().isAuthenticated());
     }
     @Test
     public void testLoginWithWrongPassword(){
-        login("classpath:realm/shiro_login.ini",username,password+1);
+        loginWithSpringConfig(username, password + 1);
         Assert.assertTrue(subject().isAuthenticated());
     }
     @Test
-    public void testLoginWithLockedAccount(){
-        login("classpath:realm/shiro_login.ini","wang",password);
+    public void testLoginWithLockedAccount() {
+        loginWithSpringConfig("wang",password);
         Assert.assertTrue(subject().isAuthenticated());
+    }
+    @Test
+    public void testLimistAttemptToLogin(){
+        for (int i = 0; i < 5; i++) {
+            System.out.println("===============");
+            loginWithSpringConfig(username , password+1);
+            System.out.println("尝试登入第" + (i + 1) + "次");
+        }
+        System.out.println("尝试登入第" + 6 + "次");
+        loginWithSpringConfig(username , password);
     }
 }

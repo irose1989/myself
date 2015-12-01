@@ -17,9 +17,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import service.PermissionService;
+import service.RoleService;
+import service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring_mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring_mybatis.xml"})
 public class BaseTest {
 
     @Autowired
@@ -130,7 +133,18 @@ public class BaseTest {
         }catch (AuthenticationException e){
             System.out.println("登入失败:"+e.getMessage());
         }
+    }
+    protected void loginWithSpringConfig(String username, String password){
+        SecurityUtils.setSecurityManager(securityManager);
 
+        //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        try {
+            subject.login(token);
+        }catch (AuthenticationException e){
+            System.out.println("登入失败:"+e.getMessage());
+        }
     }
 
     public Subject subject() {
