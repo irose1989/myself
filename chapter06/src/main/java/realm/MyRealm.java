@@ -1,4 +1,4 @@
-package service.realm;
+package realm;
 
 import dao.entity.permission.Permission;
 import dao.entity.user.User;

@@ -8,6 +8,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.apache.shiro.util.ThreadContext;
@@ -17,9 +18,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import service.PermissionService;
-import service.RoleService;
-import service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring_mybatis.xml"})
@@ -46,7 +44,7 @@ public class BaseTest {
     protected User u3;
     protected User u4;
 
-    @Test
+//    @Test
     public void setUp() {
 
         //1、新增权限
@@ -103,7 +101,7 @@ public class BaseTest {
      2） 构造函数被重载过，但是没有空的构造函数。
      3） 最好不要使用简单类型，如int, long等，改用对象模式Integer, Long等。在写条件查询时会用到判断<if xxx != null > … </if>的
      */
-    @Test
+//    @Test
     public void findRoleById(){
         long id = 1;
         Role role = roleService.getRole(id);
@@ -118,13 +116,12 @@ public class BaseTest {
     }
 
     protected void login(String configFile, String username, String password) {
-//        //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
-//        Factory<org.apache.shiro.mgt.SecurityManager> factory =
-//                new IniSecurityManagerFactory(configFile);
-//        //2、得到SecurityManager实例 并绑定给SecurityUtils
-//        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
+        //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
+        Factory<SecurityManager> factory =
+                new IniSecurityManagerFactory(configFile);
+        //2、得到SecurityManager实例 并绑定给SecurityUtils
+        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
-
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);

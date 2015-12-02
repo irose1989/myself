@@ -21,7 +21,7 @@
     <bean id="permissionService" class="service.impl.PermissionServiceImpl"/>
     <bean id="roleService" class="service.impl.RoleServiceImpl"/>
     <bean id="userService" class="service.impl.UserServiceImpl"/>
-    <bean id="passwordHelp" class="service.util.PasswordHelp"/>
+    <bean id="passwordHelp" class="util.PasswordHelp"/>
 
     <!--次数限制配置-->
     <!--<bean id="cacheConfiguration" class="net.sf.ehcache.config.CacheConfiguration">-->
@@ -47,14 +47,14 @@
     </bean>
 
 <!--org.apache.shiro.authc.credential.HashedCredentialsMatcher-->
-    <bean id="hashedCredentialsMatcher" class="credentials.RetryLimitMather">
+    <bean id="hashedCredentialsMatcher" class="credentials.RetryLimit">
         <property name="hashAlgorithmName" value="MD5"/>
         <property name="hashIterations" value="2"/>
         <property name="storedCredentialsHexEncoded" value="true"/>
     </bean>
 
 
-    <bean id="myRealm" class="service.realm.MyRealm">
+    <bean id="myRealm" class="realm.MyRealm">
         <property name="userService" ref="userService"/>
         <property name="credentialsMatcher" ref="hashedCredentialsMatcher"/>
     </bean>

@@ -1,4 +1,4 @@
-package service.util;
+package util;
 
 import dao.entity.user.User;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
