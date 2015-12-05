@@ -1,7 +1,7 @@
 package dao.user;
 
-import entity.user.User;
-import entity.user.UserExample;
+import dao.entity.user.User;
+import dao.entity.user.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

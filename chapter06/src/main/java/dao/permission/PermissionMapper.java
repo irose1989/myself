@@ -1,7 +1,7 @@
 package dao.permission;
 
-import entity.permission.Permission;
-import entity.permission.PermissionExample;
+import dao.entity.permission.Permission;
+import dao.entity.permission.PermissionExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
