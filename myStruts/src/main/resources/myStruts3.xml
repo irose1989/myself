@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="helloworld3" extends="struts-default">
+                <interceptors>
+                        <interceptor name="myInterceptor" class="interceptor.MyInterceptor"/>
+                </interceptors>
+                <action name="hello3"
+                        class="hello.HelloAction"
+                        method="execute">
+                        <result name="success">/hello/helloSuccess.jsp</result>
+                        <interceptor-ref name="myInterceptor"/>
+                        <interceptor-ref name="params"/>
+                </action>
+        </package>
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="helloworld2" extends="struts-default">
+                <action name="hello2"
+                        class="hello.HelloAction2"
+                        method="execute">
+
+                        <result name="success">/hello/helloSuccess.jsp</result>
+                        <interceptor-ref name="timer"/>
+                        <interceptor-ref name="params"/>
+                </action>
+        </package>
+</struts>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <include file="myStruts1.xml"/>
+        <include file="myStruts2.xml"/>
+        <include file="myStruts3.xml"/>
+        <include file="emp.xml"/>
+</struts>
