@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <constant name="struts.devMode" value="true"/>
+        <constant name="struts.multipart.maxSize" value="1000000"/>
+        <package name="helloed" extends="struts-default" namespace="/">
+            <!--<interceptors>-->
+                <!--<interceptor name="myinterceptor" class="MyInterceptor"/>-->
+            <!--</interceptors>-->
+            <!--上传文件-->
+            
+            <!--<action name="upload"-->
+                    <!--class="UploadAction"-->
+                    <!-->-->
+                <!--<interceptor-ref name="basicStack"/>-->
+                <!--<interceptor-ref name="fileUpload">-->
+                    <!--<param name="allowedTypes">image/jpeg,image/gif</param>-->
+                <!--</interceptor-ref>-->
+                <!--<result name="success" >UploadSuccess.jsp</result>-->
+                <!--<result name="error">uploadError.jsp</result>-->
+
+            <!--</action>-->
+
+            <!---->
+            <!--<action name="hello"-->
+                    <!--class="HelloWorldAction"-->
+                    <!--method="execute">-->
+                <!--<interceptor-ref name="params"/>-->
+                <!--<interceptor-ref name="myinterceptor"/>-->
+                <!--&lt;!&ndash;<result name="success">/WEB-INF/HelloWorld.jsp</result>&ndash;&gt;-->
+                <!--&lt;!&ndash;<result name="success" type="freemarker">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<param name="location" >WEB-INF/hello.ftl</param>&ndash;&gt;-->
+                <!--&lt;!&ndash;</result>&ndash;&gt;-->
+                <!--<result name="success" type="redirect">-->
+                    <!--<param name="location">HelloWorld.jsp</param>-->
+                <!--</result>-->
+                <!--<result name="error">WEB-INF/error.jsp</result>-->
+            <!--</action>-->
+
+            <!--登入-->
+            <action name="login"
+                    class="LoginAction"
+                    method="execute">
+                <result name="error" >loginError.jsp</result>
+                <result name="success">loginSuccess.jsp</result>
+            </action>
+    </package>
+    
+</struts>
