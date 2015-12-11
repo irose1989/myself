@@ -1,15 +1,28 @@
 package employee;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
 
 /**
  * Created by Administrator on 2015/12/9.
  *
- * TODO 一直验证失败
+ * TODO XML配置验证一直失败
+ * TODO 使用注释验证木有成功
  */
+@Results({
+        @Result(name = "success",location = "/employee/empSuccess.jsp"),
+        @Result(name = "input",location = "/employee/employee.jsp")
+})
+@Namespace("/employee")
 public class EmployeeAction extends ActionSupport {
     private String username;
-    private int age1;
+    private int age;
 //    @Override
 //    public void validate() {
 //        if(name==null||name.trim().equals("")){
@@ -22,10 +35,12 @@ public class EmployeeAction extends ActionSupport {
 //    }
 
     @Override
+    @Action(value = "emp")
     public String execute() throws Exception {
         return SUCCESS;
-    }
 
+    }
+    @RequiredFieldValidator(message = "用户名不能为空")
     public String getUsername() {
         return username;
     }
@@ -34,11 +49,12 @@ public class EmployeeAction extends ActionSupport {
         this.username = username;
     }
 
-    public int getAge1() {
-        return age1;
+    @IntRangeFieldValidator(min = "20",max = "50",message = "年龄必须在20-50之间")
+    public int getAge() {
+        return age;
     }
 
-    public void setAge1(int age1) {
-        this.age1 = age1;
+    public void setAge(int age) {
+        this.age = age;
     }
 }

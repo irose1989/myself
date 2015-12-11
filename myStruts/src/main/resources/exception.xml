@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+  <package name="exceptionTest" extends="struts-default">
+	<!--全局异常捕获-->
+	<global-exception-mappings>
+	  <exception-mapping exception="java.lang.NullPointerException"
+						 result="error">
+	  </exception-mapping>
+	</global-exception-mappings>
+	<action name="helloException" class="exception.ExceptionAction"
+			method="execute">
+	  <!--<exception-mapping exception="java.lang.NullPointerException"-->
+						 <!--result="error"/>-->
+	  <result name="success">/exception/helloSuccess.jsp</result>
+	  <result name="error">/exception/error.jsp</result>
+	</action>
+  </package>
+</struts>

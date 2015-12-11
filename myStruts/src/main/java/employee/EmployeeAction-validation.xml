@@ -8,7 +8,7 @@
                         <message>The name is required.</message>
                 </field-validator>
         </field>
-        <field name="age1">
+        <field name="age">
                 <field-validator type="int">
                         <param name="max">50</param>
                         <param name="min">20</param>

@@ -5,8 +5,10 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-        <include file="myStruts1.xml"/>
-        <include file="myStruts2.xml"/>
-        <include file="myStruts3.xml"/>
-        <include file="emp.xml"/>
+  <!--<include file="myStruts1.xml"/>-->
+  <!--<include file="myStruts2.xml"/>-->
+  <!--<include file="myStruts3.xml"/>-->
+  <!--<include file="emp.xml"/>-->
+  <!--<include file="windowsDetail.xml"/>-->
+  <!--<include file="exception.xml"/>-->
 </struts>

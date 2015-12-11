@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: wb-chenchaobin
   Date: 2015/12/9
-  Time: 0:28
+  Time: 16:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,10 +12,9 @@
     <title></title>
 </head>
 <body>
-  <s:form action="emp" method="POST">
-    <s:textfield name="username" label="username" size="20"/>
-    <s:textfield name="age" label="age" size="20"/>
-    <s:submit name="submit" label="submit" align="center"/>
-  </s:form>
+    <s:form>
+        <s:textfield name="firstName" label="firstName"/>
+        <s:textfield name="lastName" label="lastName"/>
+    </s:form>
 </body>
 </html>
