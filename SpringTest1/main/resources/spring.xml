@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+  <!--<bean id="car" class="reflect.Car"-->
+		<!--p:brand="aodi"-->
+		<!--p:color="black"-->
+		<!--p:speed="100"-->
+		  <!--/>-->
+  <bean id="d" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<property name="customEditors">
+	  <map>
+		<entry key="reflect.Car">
+		  <bean class="reflect.MyJavaEditor"/>
+		</entry>
+	  </map>
+	</property>
+  </bean>
+
+<!--<bean id="boss" class="reflect.Boss"-->
+		<!--p:name="kobe"-->
+	  	<!--p:car="奥迪,black,100"-->
+		<!--/>-->
+  <context:property-placeholder
+		  	location="classpath:boss.properties"
+			file-encoding="utf-8"
+		  />
+  <bean id="boss" class="reflect.Boss"
+		p:name="${name}"
+		p:car="${car}"
+		  />
+
+</beans>
