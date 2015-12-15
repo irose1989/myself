@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+  <bean id="helloWorld" class="AopTest.helloWorld.HelloWorldServiceImpl"/>
+  <bean id="helloWorldAspect" class="AopTest.helloWorld.HelloWorldAspect"/>
+
+    <!--test:before,after-->
+  <!--<aop:config>-->
+	<!--<aop:aspect ref="helloWorldAspect">-->
+		<!--<aop:pointcut id="text" expression="execution(* AopTest.helloWorld.IHelloWorldService.*(String)) and args(text)"/>-->
+	  <!--<aop:before pointcut-ref="text" method="beforeHello" arg-names="text"/>-->
+        <!--<aop:after pointcut-ref="text" method="afterHello" arg-names="text"/>-->
+	<!--</aop:aspect>-->
+  <!--</aop:config>-->
+
+    <!--test:after-returnning-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="helloWorldAspect">-->
+            <!--<aop:pointcut id="test" expression="execution(* AopTest..*.*(..))"/>-->
+            <!--<aop:after-returning pointcut-ref="test" method="returnTest" arg-names="o" returning="o"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--test:after-Exception-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="helloWorldAspect">-->
+            <!--<aop:pointcut id="exception" expression="execution(* AopTest..*.afterThrow())"/>-->
+            <!--<aop:after-throwing pointcut-ref="exception" method="afterException" arg-names="e" throwing="e" />-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--test:after-->
+    <aop:config>
+        <aop:aspect ref="helloWorldAspect">
+            <aop:pointcut id="exception" expression="execution(* AopTest..*.afterThrow(..))"/>
+            <aop:after pointcut-ref="exception" method="afterException" />
+        </aop:aspect>
+    </aop:config>
+
+    <!--test:around-->
+    <aop:config>
+        <aop:aspect ref="helloWorldAspect">
+            <aop:pointcut id="around" expression="execution(* AopTest..*(..))"/>
+            <aop:around pointcut-ref="around" method="testAround"/>
+        </aop:aspect>
+    </aop:config>
+
+	<!--切点表达式 http://blog.csdn.net/dc_726/article/details/8565174-->
+</beans>

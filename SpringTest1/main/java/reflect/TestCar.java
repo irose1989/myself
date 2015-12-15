@@ -83,7 +83,7 @@ public class TestCar {
     @Test
     public void testSpringXml() throws IOException {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource resource = resolver.getResource("classpath:spring.xml");
+        Resource resource = resolver.getResource("classpath:spring_aop.xml");
         BeanFactory factory = new XmlBeanFactory(resource);
         System.out.println("init factory");
         Car car = factory.getBean("car", Car.class);
