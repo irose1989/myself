@@ -84,7 +84,12 @@
 	<artifactId>aspectjweaver</artifactId>
 	<version>1.6.11</version>
   </dependency>
-  <!-- springframe end -->
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-lang3</artifactId>
+	  <version>3.4</version>
+	</dependency>
+	<!-- springframe end -->
   </dependencies>
 
 </project>

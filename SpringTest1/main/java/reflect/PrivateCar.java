@@ -5,7 +5,7 @@ package reflect;
  */
 public class PrivateCar {
     private String color;
-    protected void show(){
+    private void show(){
         System.out.println("car:" +color);
     }
 

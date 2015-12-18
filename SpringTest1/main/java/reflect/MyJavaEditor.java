@@ -16,7 +16,6 @@ public class MyJavaEditor extends PropertyEditorSupport {
         Car car  = new Car();
         car.setBrand(args[0]);
         car.setColor(args[1]);
-        car.setSpeed(Integer.valueOf(args[2]));
         setValue(car);
     }
 }
